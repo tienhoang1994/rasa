@@ -116,7 +116,7 @@ def test_yaml_writer_doesnt_dump_action_unlikely_intent():
     assert (
         dump.strip()
         == textwrap.dedent(
-            """
+            f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     stories:
     - story: default
