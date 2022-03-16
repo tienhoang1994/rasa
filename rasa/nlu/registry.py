@@ -174,6 +174,13 @@ def load_component_by_meta(
     # try to get class name first, else create by name
     component_name = component_meta.get("class", component_meta["name"])
     component_class = get_component_class(component_name)
+
+    if component_meta['name'] == 'FastTextFeaturizer':
+        if component_meta['alias'] == 'component_5_FastTextFeaturizer':
+            component_meta['alias'] = 'prevent_reload'
+            return component_class.load(
+                component_meta, model_dir, metadata, cached_component, **kwargs
+            )
     return component_class.load(
         component_meta, model_dir, metadata, cached_component, **kwargs
     )
